@@ -106,12 +106,9 @@
     .heroInner{
       position:relative;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1fr;
       gap: 18px;
       align-items:center;
-    }
-    @media (max-width: 860px){
-      .heroInner{grid-template-columns:1fr; gap: 14px;}
     }
 
     h1{
@@ -185,35 +182,6 @@
       touch-action: manipulation;
     }
     .btnNo:hover{background:#fff}
-
-    .sideCard{
-      position:relative;
-      border-radius: 20px;
-      padding: 16px;
-      background: #ffffffb3;
-      border: 1px solid rgba(226,85,122,.14);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .sideCard h3{
-      margin: 0 0 10px;
-      font-size: 16px;
-      letter-spacing:.1px;
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .chip{
-      padding: 9px 10px;
-      border-radius: 999px;
-      background: rgba(226,85,122,.08);
-      border: 1px solid rgba(226,85,122,.12);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 12.5px;
-    }
 
     .section{
       margin-top: 18px;
@@ -370,11 +338,16 @@
     }
     .finalText strong{color: var(--text)}
 
+    /* -------------------------
+       CARTA + ANIMACIÓN MEJORADA
+       ------------------------- */
     .letterWrap{
       display:none;
       margin-top: 14px;
+      transform-origin: top;
     }
     .letterWrap.show{display:block}
+
     .envelope{
       position:relative;
       border-radius: 22px;
@@ -382,7 +355,11 @@
       background: linear-gradient(180deg, #fff, #fff6f7);
       border: 1px solid rgba(226,85,122,.14);
       box-shadow: var(--shadow);
+      transform: translateY(0) scale(1);
+      transition: transform .35s cubic-bezier(.2,.9,.2,1);
+      will-change: transform;
     }
+
     .envTop{
       padding: 14px 16px;
       display:flex;
@@ -390,42 +367,90 @@
       justify-content:space-between;
       gap: 10px;
       background: linear-gradient(180deg, rgba(226,85,122,.10), rgba(255,255,255,.0));
+      position:relative;
+      z-index: 3;
     }
     .envTop .title{
       font-weight: 950;
       letter-spacing:.2px;
     }
+
     .stamp{
       font-size: 18px;
       padding: 8px 10px;
       border-radius: 14px;
       background: rgba(226,85,122,.10);
       border: 1px dashed rgba(226,85,122,.28);
+      transform: rotate(-4deg) scale(1);
+      transition: transform .35s cubic-bezier(.2,.9,.2,1), filter .35s ease;
+      filter: saturate(1.05);
+    }
+
+    .envGlow{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      pointer-events:none;
+      background:
+        radial-gradient(420px 260px at 18% 10%, rgba(226,85,122,.16), transparent 60%),
+        radial-gradient(520px 320px at 90% 0%, rgba(255,143,171,.12), transparent 60%);
+      opacity:.0;
+      transition: opacity .45s ease;
+      z-index: 1;
     }
 
     .flap{
       position:relative;
-      height: 70px;
-      background: linear-gradient(180deg, rgba(255,143,171,.20), rgba(226,85,122,.10));
+      height: 78px;
+      background: linear-gradient(180deg, rgba(255,143,171,.22), rgba(226,85,122,.12));
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top;
-      transform: rotateX(0deg);
-      transition: transform .7s cubic-bezier(.2,.9,.2,1);
+      transform: perspective(900px) rotateX(0deg);
+      transition: transform .9s cubic-bezier(.2,.9,.2,1);
       border-bottom: 1px solid rgba(226,85,122,.10);
+      z-index: 2;
     }
-    .envelope.open .flap{transform: rotateX(180deg);}
 
     .letter{
       padding: 14px 16px 18px;
-      transform: translateY(-18px);
+      transform: translateY(-26px) scale(.98);
       opacity: 0;
-      transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .5s ease;
-    }
-    .envelope.open .letter{
-      transform: translateY(0px);
-      opacity: 1;
+      transition: transform .85s cubic-bezier(.2,.9,.2,1), opacity .55s ease;
+      position:relative;
+      z-index: 2;
     }
 
+    .envelope.open{
+      animation: envPop .65s cubic-bezier(.2,.9,.2,1) both;
+    }
+    .envelope.open .envGlow{ opacity: 1; }
+    .envelope.open .flap{
+      transform: perspective(900px) rotateX(180deg);
+    }
+    .envelope.open .stamp{
+      transform: rotate(-8deg) scale(1.06);
+      filter: saturate(1.2) drop-shadow(0 10px 18px rgba(226,85,122,.20));
+    }
+    .envelope.open .letter{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation: letterRise .9s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    @keyframes envPop{
+      0%{ transform: translateY(6px) scale(.985); }
+      55%{ transform: translateY(-2px) scale(1.01); }
+      100%{ transform: translateY(0) scale(1); }
+    }
+    @keyframes letterRise{
+      0%{ transform: translateY(16px) scale(.985); }
+      55%{ transform: translateY(-4px) scale(1.01); }
+      100%{ transform: translateY(0) scale(1); }
+    }
+
+    /* -------------------------
+       CUPONES (VOLVER A LOS ANTERIORES)
+       ------------------------- */
     .coupons{
       margin-top: 10px;
       display:grid;
@@ -559,10 +584,13 @@
 
           <div class="letterWrap" id="letterWrap" aria-live="polite">
             <div class="envelope" id="envelope">
+              <div class="envGlow" aria-hidden="true"></div>
+
               <div class="envTop">
                 <div class="title">Para mi vida 💌</div>
                 <div class="stamp" aria-hidden="true">💗</div>
               </div>
+
               <div class="flap" aria-hidden="true"></div>
 
               <div class="letter">
@@ -580,17 +608,7 @@
           </div>
         </div>
 
-        <aside class="sideCard">
-          <h3>Detalles de amor (y código) 🌷</h3>
-          <div class="chips">
-            <span class="chip">Pastel + crema</span>
-            <span class="chip">Mobile first</span>
-            <span class="chip">Corazones flotando</span>
-            <span class="chip">Galería + modal</span>
-            <span class="chip">Carta con cupones</span>
-            <span class="chip">Para mi vida</span>
-          </div>
-        </aside>
+        <!-- ✅ Eliminado: “Detalles de amor (y código)” -->
       </div>
     </header>
 
@@ -645,10 +663,9 @@
 
   <script>
     const START_DATE = new Date(2025, 4, 10, 0, 0, 0);
-
-    // ✅ CORREGIDO: fotos en la raíz (mismo nivel que index.html)
     const PHOTOS = Array.from({ length: 10 }, (_, i) => `${i+1}.jpg`);
 
+    // ✅ VUELTA a los cupones anteriores
     const COUPONS = [
       { icon: "🍝", text: "Cupón válido para ir a cenar", tag: "Yo invito 💘" },
       { icon: "🏖️", text: "Cupón válido para ir a la playa", tag: "Escape juntos 🌊" },
@@ -720,6 +737,7 @@
         };
 
         btn.appendChild(img);
+
         const overlay = document.createElement("div");
         overlay.className = "phOverlay";
         overlay.textContent = `Foto ${idx+1}`;
@@ -775,8 +793,10 @@
 
     function openLetter(){
       letterWrap.classList.add("show");
-      setTimeout(()=> envelope.classList.add("open"), 140);
-      setTimeout(()=> letterWrap.scrollIntoView({ behavior:"smooth", block:"start" }), 220);
+      requestAnimationFrame(()=>{
+        setTimeout(()=> envelope.classList.add("open"), 80);
+      });
+      setTimeout(()=> letterWrap.scrollIntoView({ behavior:"smooth", block:"start" }), 260);
     }
 
     function closeLetter(){
@@ -818,10 +838,10 @@
       btnYes.style.opacity = ".92";
       btnNo.style.opacity = ".92";
       openLetter();
-      burstHearts(16);
+      burstHearts(22);
     });
 
-    const playfulNo = (e)=>{
+    const playfulNo = ()=>{
       if(btnNo.disabled) return;
       changeNoText();
       moveNoButton();
@@ -829,7 +849,7 @@
     };
 
     btnNo.addEventListener("mouseenter", playfulNo);
-    btnNo.addEventListener("touchstart", (e)=>{ e.preventDefault(); playfulNo(e); }, { passive:false });
+    btnNo.addEventListener("touchstart", (e)=>{ e.preventDefault(); playfulNo(); }, { passive:false });
     btnNo.addEventListener("click", playfulNo);
 
     const heartsLayer = $("heartsLayer");
@@ -865,7 +885,7 @@
 
     function burstHearts(n=10){
       for(let i=0;i<n;i++){
-        setTimeout(spawnHeart, i * 40);
+        setTimeout(spawnHeart, i * 35);
       }
     }
 
