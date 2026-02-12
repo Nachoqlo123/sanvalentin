@@ -1,0 +1,123 @@
+/* =========================
+   ✅ RESPONSIVE FIX (CELULAR)
+   ========================= */
+
+/* Evita cortes por palabras largas (links, emojis, etc.) */
+h1, .subtitle, .finalText, .loveItem span, .counterText {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Topbar: que no se salga en pantallas chicas */
+@media (max-width: 520px){
+  .container{
+    width: min(980px, 94vw);
+    padding: 14px 0 48px;
+  }
+
+  .topbar{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 18px; /* mejor en móvil */
+  }
+
+  /* ✅ El badge ya NO debe ser nowrap en móvil */
+  .badge{
+    white-space: normal;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .resetBtn{
+    width: 100%;
+  }
+
+  /* Hero más “apretado” para que no se corte nada */
+  .hero{
+    padding: 16px;
+  }
+
+  /* Botones: 2 columnas si caben, si no, 1 columna */
+  .ctaWrap{
+    gap: 10px;
+  }
+  .btn{
+    flex: 1 1 160px;
+    min-width: 0;
+  }
+
+  /* Counter: que se adapte */
+  .counterCard{
+    width: 100%;
+  }
+}
+
+/* Extra pequeño (iPhone SE / pantallas muy angostas) */
+@media (max-width: 380px){
+  h1{ font-size: 24px; }
+  .btn{ width: 100%; }
+}
+
+/* =========================
+   CUPONES (los simples)
+   ========================= */
+@media (max-width: 520px){
+  .coupon{
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  /* ✅ antes estaba nowrap, en móvil mejor que haga salto */
+  .coupon .name{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.25;
+  }
+
+  /* Tag baja a la siguiente línea si no cabe */
+  .coupon .tag{
+    margin-left: auto;
+  }
+}
+
+/* =========================
+   CUPONES estilo “ticket”
+   (por si estás usando couponTicket)
+   ========================= */
+@media (max-width: 520px){
+  .ticketInner{
+    grid-template-columns: 1fr; /* apila texto y dibujo */
+  }
+  .ticketArt{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  .ticketArt svg{
+    width: 100%;
+    height: 70px;
+  }
+
+  .ticketBig{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+/* Modal en celular: más aire y evita “cortes” */
+@media (max-width: 520px){
+  .modal{
+    padding: 10px;
+  }
+  .modalCard{
+    width: 96vw;
+  }
+  .modalImg{
+    height: 70vh;
+  }
+}
