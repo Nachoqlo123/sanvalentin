@@ -6,25 +6,15 @@
   <meta name="theme-color" content="#f7d7df" />
   <title>Para mi vida 💗</title>
 
-  <!--
-    ✅ EDITA FÁCIL:
-    - Textos: busca "EDITABLE:"
-    - Colores: busca ":root"
-    - Fecha contador: busca "START_DATE"
-    - Fotos: busca "PHOTOS"
-    - Cupones: busca "COUPONS"
-  -->
-
   <style>
     :root{
-      /* EDITABLE: paleta */
       --bg1:#fff6f7;
       --bg2:#fdecef;
       --card:#ffffffcc;
       --text:#2a1f24;
       --muted:#6a4d57;
-      --accent:#e2557a;     /* rojo/rosa suave */
-      --accent2:#ff8fab;    /* rosa pastel */
+      --accent:#e2557a;
+      --accent2:#ff8fab;
       --cream:#fff2e6;
       --shadow: 0 18px 50px rgba(40, 10, 20, .10);
       --shadow2: 0 10px 24px rgba(40, 10, 20, .10);
@@ -51,7 +41,6 @@
       padding: 22px 0 60px;
     }
 
-    /* Top subtle bar */
     .topbar{
       display:flex;
       justify-content:space-between;
@@ -93,7 +82,6 @@
     .resetBtn:active{transform: scale(.98)}
     .resetBtn:hover{background:#fff}
 
-    /* Hero */
     .hero{
       position:relative;
       margin-top: 18px;
@@ -165,7 +153,6 @@
       font-size: 14px;
     }
 
-    /* Buttons */
     .ctaWrap{
       display:flex;
       gap: 12px;
@@ -198,9 +185,7 @@
       touch-action: manipulation;
     }
     .btnNo:hover{background:#fff}
-    .btnNo[aria-disabled="true"]{opacity:.95}
 
-    /* right side chip card */
     .sideCard{
       position:relative;
       border-radius: 20px;
@@ -230,7 +215,6 @@
       font-size: 12.5px;
     }
 
-    /* Sections */
     .section{
       margin-top: 18px;
       padding: 18px;
@@ -249,16 +233,7 @@
       font-size: 18px;
       letter-spacing:-.2px;
     }
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 760px){
-      .grid2{grid-template-columns:1fr}
-    }
 
-    /* Love list */
     .loveList{
       list-style:none;
       padding:0;
@@ -297,7 +272,6 @@
       margin-top: 3px;
     }
 
-    /* Gallery */
     .gallery{
       display:grid;
       grid-template-columns: repeat(5, 1fr);
@@ -343,7 +317,6 @@
     }
     .photo:hover .phOverlay{opacity:.12}
 
-    /* Modal / Lightbox */
     .modal{
       position:fixed;
       inset:0;
@@ -389,7 +362,6 @@
       display:block;
     }
 
-    /* Final message */
     .finalText{
       margin:0;
       color: var(--muted);
@@ -398,7 +370,6 @@
     }
     .finalText strong{color: var(--text)}
 
-    /* Letter (envelope) */
     .letterWrap{
       display:none;
       margin-top: 14px;
@@ -432,7 +403,6 @@
       border: 1px dashed rgba(226,85,122,.28);
     }
 
-    /* flap */
     .flap{
       position:relative;
       height: 70px;
@@ -507,7 +477,6 @@
       white-space:nowrap;
     }
 
-    /* Hearts layer */
     .hearts{
       position:fixed;
       inset:0;
@@ -544,7 +513,6 @@
       to{transform: translateY(-120vh) rotate(45deg) scale(1.25); opacity:0}
     }
 
-    /* Small helper */
     .tiny{
       font-size: 12px;
       color: rgba(106,77,87,.9);
@@ -552,7 +520,6 @@
       line-height:1.5;
     }
 
-    /* Focus styles */
     :focus-visible{
       outline: 3px solid rgba(226,85,122,.35);
       outline-offset: 3px;
@@ -562,7 +529,6 @@
 </head>
 
 <body>
-  <!-- Floating hearts -->
   <div class="hearts" aria-hidden="true" id="heartsLayer"></div>
 
   <div class="container" style="position:relative; z-index:1;">
@@ -574,7 +540,6 @@
     <header class="hero" id="hero">
       <div class="heroInner">
         <div>
-          <!-- EDITABLE: Título y subtítulo -->
           <h1>Camila (mi vida), ¿quieres ser mi San Valentín?</h1>
           <p class="subtitle">Tengo una mini sorpresa hecha con amor (y un poco de código).</p>
 
@@ -592,7 +557,6 @@
             Hecho para ti, <strong>mi vida</strong>. Si presionas “Sí”, se abre una cartita con una sorpresa ✨
           </p>
 
-          <!-- Letter appears after "Sí" -->
           <div class="letterWrap" id="letterWrap" aria-live="polite">
             <div class="envelope" id="envelope">
               <div class="envTop">
@@ -633,7 +597,6 @@
     <section class="section" id="secLove">
       <h2>Cosas que amo de ti 💞</h2>
       <ul class="loveList">
-        <!-- EDITABLE: lista -->
         <li class="loveItem"><div class="heartIcon">💗</div><span>tus ojos</span></li>
         <li class="loveItem"><div class="heartIcon">💗</div><span>tu risa</span></li>
         <li class="loveItem"><div class="heartIcon">💗</div><span>tu forma de tratarme</span></li>
@@ -654,7 +617,7 @@
       <div class="gallery" id="gallery"></div>
 
       <p class="tiny">
-        EDITABLE: reemplaza las rutas <code>img/1.jpg</code>…<code>img/10.jpg</code> por tus fotos reales.
+        EDITABLE: reemplaza las rutas <code>1.jpg</code>…<code>10.jpg</code> por tus fotos reales.
       </p>
     </section>
 
@@ -670,7 +633,6 @@
     </section>
   </div>
 
-  <!-- Modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Foto">
     <div class="modalCard">
       <div class="modalTop">
@@ -682,16 +644,11 @@
   </div>
 
   <script>
-    /***********************
-     * EDITABLE: CONFIG
-     ***********************/
-    // EDITABLE: Fecha de inicio del contador (local)
-    const START_DATE = new Date(2025, 4, 10, 0, 0, 0); // Mes 4 = Mayo (0=Ene)
+    const START_DATE = new Date(2025, 4, 10, 0, 0, 0);
 
-    // EDITABLE: Fotos (rutas locales). Crea una carpeta /img y pon 1.jpg...10.jpg
-    const PHOTOS = Array.from({ length: 10 }, (_, i) => `img/${i+1}.jpg`);
+    // ✅ CORREGIDO: fotos en la raíz (mismo nivel que index.html)
+    const PHOTOS = Array.from({ length: 10 }, (_, i) => `${i+1}.jpg`);
 
-    // EDITABLE: Cupones
     const COUPONS = [
       { icon: "🍝", text: "Cupón válido para ir a cenar", tag: "Yo invito 💘" },
       { icon: "🏖️", text: "Cupón válido para ir a la playa", tag: "Escape juntos 🌊" },
@@ -700,7 +657,6 @@
       { icon: "🛏️", text: "Cupón válido para dormir juntos", tag: "Abrazos 🥰" },
     ];
 
-    // EDITABLE: Textos juguetones del botón "No"
     const NO_TEXTS = [
       "No 🙈",
       "¿Segura, princesa? 👀",
@@ -712,9 +668,6 @@
       "Ok… pero te amo igual 💗"
     ];
 
-    /***********************
-     * Helpers
-     ***********************/
     const $ = (id) => document.getElementById(id);
 
     function daysTogether(){
@@ -731,9 +684,6 @@
       $("daysBadge").setAttribute("aria-label", `Llevamos ${d} días juntos`);
     }
 
-    /***********************
-     * Sections reveal
-     ***********************/
     const observer = new IntersectionObserver((entries)=>{
       for(const e of entries){
         if(e.isIntersecting) e.target.classList.add("show");
@@ -742,9 +692,6 @@
 
     ["secLove","secGallery","secFinal"].forEach(id => observer.observe($(id)));
 
-    /***********************
-     * Gallery + modal
-     ***********************/
     const gallery = $("gallery");
     const modal = $("modal");
     const modalImg = $("modalImg");
@@ -764,7 +711,6 @@
         img.loading = "lazy";
         img.src = src;
 
-        // Fallback placeholder if image fails to load
         img.onerror = () => {
           img.remove();
           const overlay = document.createElement("div");
@@ -807,9 +753,6 @@
       if(e.key === "Escape" && modal.classList.contains("show")) hideModal();
     });
 
-    /***********************
-     * Coupons / Letter
-     ***********************/
     const couponsEl = $("coupons");
     const letterWrap = $("letterWrap");
     const envelope = $("envelope");
@@ -832,9 +775,7 @@
 
     function openLetter(){
       letterWrap.classList.add("show");
-      // Small delay to let layout settle
       setTimeout(()=> envelope.classList.add("open"), 140);
-      // Smooth scroll to letter on mobile
       setTimeout(()=> letterWrap.scrollIntoView({ behavior:"smooth", block:"start" }), 220);
     }
 
@@ -843,9 +784,6 @@
       setTimeout(()=> letterWrap.classList.remove("show"), 260);
     }
 
-    /***********************
-     * Buttons Yes / No
-     ***********************/
     const btnYes = $("btnYes");
     const btnNo = $("btnNo");
 
@@ -853,16 +791,11 @@
     let noMoveCount = 0;
 
     function moveNoButton(){
-      // Moves within a gentle range around its original position
-      const maxX = 90;  // px
-      const maxY = 32;  // px
-
-      // After many tries, reduce movement so it becomes clickable (no frustrante)
+      const maxX = 90;
+      const maxY = 32;
       const damp = Math.max(0.35, 1 - (noMoveCount * 0.12));
-
       const dx = (Math.random() * 2 - 1) * maxX * damp;
       const dy = (Math.random() * 2 - 1) * maxY * damp;
-
       btnNo.style.transform = `translate(${dx}px, ${dy}px)`;
       noMoveCount++;
     }
@@ -880,24 +813,18 @@
     }
 
     btnYes.addEventListener("click", ()=>{
-      // Disable both after yes (optional)
       btnYes.disabled = true;
       btnNo.disabled = true;
       btnYes.style.opacity = ".92";
       btnNo.style.opacity = ".92";
       openLetter();
-
-      // Little celebration pulse
       burstHearts(16);
     });
 
-    // Make "No" playful: move + change text on hover/touch
     const playfulNo = (e)=>{
-      // If already disabled, do nothing
       if(btnNo.disabled) return;
       changeNoText();
       moveNoButton();
-      // small heart burst
       burstHearts(6);
     };
 
@@ -905,22 +832,17 @@
     btnNo.addEventListener("touchstart", (e)=>{ e.preventDefault(); playfulNo(e); }, { passive:false });
     btnNo.addEventListener("click", playfulNo);
 
-    /***********************
-     * Hearts animation (lightweight)
-     ***********************/
     const heartsLayer = $("heartsLayer");
     let heartsInterval = null;
 
     function spawnHeart(){
       const h = document.createElement("div");
       h.className = "heart";
-      // random position at bottom
       const left = Math.random() * 100;
       const size = 10 + Math.random() * 12;
       const duration = 6 + Math.random() * 6;
       const delay = Math.random() * 1.2;
 
-      // Soft pastel color mix (using CSS currentColor)
       const colors = ["rgba(226,85,122,.9)", "rgba(255,143,171,.9)", "rgba(240,120,150,.9)", "rgba(255,170,190,.9)"];
       h.style.color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -932,22 +854,13 @@
       h.style.animationDelay = delay + "s";
 
       heartsLayer.appendChild(h);
-
-      // cleanup
       setTimeout(()=> h.remove(), (duration + delay) * 1000 + 200);
     }
 
     function startHearts(){
       if(heartsInterval) return;
-      // "Constantes pero no agobiante": spawn suave
       heartsInterval = setInterval(spawnHeart, 520);
-      // Start with a few
       for(let i=0;i<10;i++) spawnHeart();
-    }
-
-    function stopHearts(){
-      clearInterval(heartsInterval);
-      heartsInterval = null;
     }
 
     function burstHearts(n=10){
@@ -956,39 +869,22 @@
       }
     }
 
-    /***********************
-     * Reset button
-     ***********************/
     $("resetBtn").addEventListener("click", ()=>{
-      // Re-enable buttons
       btnYes.disabled = false;
       btnNo.disabled = false;
       btnYes.style.opacity = "";
       btnNo.style.opacity = "";
-
-      // Hide letter
       closeLetter();
-
-      // Reset playful No
       resetNoButton();
-
-      // Close modal if open
       if(modal.classList.contains("show")) hideModal();
-
-      // Small scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
-
       burstHearts(10);
     });
 
-    /***********************
-     * Init
-     ***********************/
     setCounter();
     buildGallery();
     buildCoupons();
     startHearts();
-    // keep counter updated daily-ish (and also if user leaves it open)
     setInterval(setCounter, 60 * 1000);
   </script>
 </body>
